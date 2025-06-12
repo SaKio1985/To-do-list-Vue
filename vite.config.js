@@ -4,7 +4,7 @@ import vue from '@vitejs/plugin-vue'
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [vue()],
-  base: '/vue-todo-app/', // Reemplaza con el nombre de tu repositorio
+  base: 'To-do-list-Vue',
   build: {
     outDir: 'dist',
     assetsDir: 'assets'
