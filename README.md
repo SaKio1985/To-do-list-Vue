@@ -257,6 +257,6 @@ Este proyecto está bajo la **Licencia MIT** - ve el archivo [LICENSE](LICENSE) 
 
 **Hecho con ❤️ usando Vue 3 y Vite**
 
-[🌟 Star este proyecto](https://github.com/tu-usuario/vue-todo-app) • [🐛 Reportar Bug](https://github.com/tu-usuario/vue-todo-app/issues) • [💡 Solicitar Feature](https://github.com/tu-usuario/vue-todo-app/issues)
+[🌟 Star este proyecto](https://github.com/SaKio1985/vue-todo-app) • [🐛 Reportar Bug](https://github.com/SaKio1985/vue-todo-app/issues) • [💡 Solicitar Feature](https://github.com/SaKio1985/vue-todo-app/issues)
 
 </div>
