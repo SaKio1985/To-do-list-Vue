@@ -1,37 +1,37 @@
 <script setup>
-import {ref} from 'vue';
-import TarjetaComponent from './components/TarjetaComponent.vue';
-import Button from './components/Button.vue';
-import Formulario from './components/Formulario.vue'; // Este es el Formulario.vue refactorizado
+import { ref } from "vue";
+import TarjetaComponent from "./components/TarjetaComponent.vue";
+import Button from "./components/Button.vue";
+import Formulario from "./components/Formulario.vue"; // Este es el Formulario.vue refactorizado
 
 const tareasPendientes = ref([
   // ... tus tareas iniciales ...
   {
     id: 1,
-    titulo: 'Preparar presentación',
-    descripcion: 'Crear diapositivas para la reunión del lunes',
-    prioridad: 'Alta',
-    fechaLimite: '2025-04-15',
+    titulo: "Preparar presentación",
+    descripcion: "Crear diapositivas para la reunión del lunes",
+    prioridad: "Alta",
+    fechaLimite: "2025-04-15",
     completada: false,
-    categoria: 'Trabajo',
+    categoria: "Trabajo",
   },
   {
     id: 2,
-    titulo: 'Comprar provisiones',
-    descripcion: 'Ir al supermercado por productos básicos',
-    prioridad: 'Media',
-    fechaLimite: '2025-04-12',
+    titulo: "Comprar provisiones",
+    descripcion: "Ir al supermercado por productos básicos",
+    prioridad: "Media",
+    fechaLimite: "2025-04-12",
     completada: false,
-    categoria: 'Personal',
+    categoria: "Personal",
   },
   {
     id: 3,
-    titulo: 'Actualizar portfolio',
-    descripcion: 'Agregar nuevos proyectos y mejorar diseño',
-    prioridad: 'Baja',
-    fechaLimite: '2025-05-01',
+    titulo: "Actualizar portfolio",
+    descripcion: "Agregar nuevos proyectos y mejorar diseño",
+    prioridad: "Baja",
+    fechaLimite: "2025-05-01",
     completada: false,
-    categoria: 'Desarrollo Profesional',
+    categoria: "Desarrollo Profesional",
   },
 ]);
 
@@ -48,32 +48,43 @@ const agregartarea = (nuevatarea) => {
 };
 
 const borrarTarea = (id) => {
-  tareasPendientes.value = tareasPendientes.value.filter(t => t.id !== id);
+  tareasPendientes.value = tareasPendientes.value.filter((t) => t.id !== id);
 };
 
 // La función 'modificarTarea' recibe la tarea del evento 'tareaActualizada'
 const modificarTarea = (tareaActualizada) => {
-  const index = tareasPendientes.value.findIndex(t => t.id === tareaActualizada.id);
+  const index = tareasPendientes.value.findIndex(
+    (t) => t.id === tareaActualizada.id
+  );
   if (index !== -1) {
     tareasPendientes.value[index] = tareaActualizada;
-    console.log("App.vue: Tarea actualizada en la lista:", tareasPendientes.value[index]);
+    console.log(
+      "App.vue: Tarea actualizada en la lista:",
+      tareasPendientes.value[index]
+    );
   } else {
-    console.warn("App.vue: No se encontró la tarea para actualizar con ID:", tareaActualizada.id);
+    console.warn(
+      "App.vue: No se encontró la tarea para actualizar con ID:",
+      tareaActualizada.id
+    );
   }
 };
 </script>
 
 <template>
   <h1>TO DO LIST</h1>
-  <Button @click="ordenarTareas" titulo="Ordenar Alfabéticamente por titulo"/>
-  <Button @click="ordenarCategorias" titulo="Ordenar Alfabéticamente por Categorias"/>
+  <Button @click="ordenarTareas" titulo="Ordenar Alfabéticamente por titulo" />
+  <Button
+    @click="ordenarCategorias"
+    titulo="Ordenar Alfabéticamente por Categorias"
+  />
 
   <!-- Formulario para agregar nuevas tareas -->
   <Formulario
-    @submitFormulario="agregartarea" 
+    @submitFormulario="agregartarea"
     titulo="Nueva tarea"
-    texto-boton-submit="Agregar Tarea" 
-    :datos-iniciales="null" 
+    texto-boton-submit="Agregar Tarea"
+    :datos-iniciales="null"
   />
 
   <div class="tareas">
@@ -82,7 +93,7 @@ const modificarTarea = (tareaActualizada) => {
       :tarea="tarea"
       :key="tarea.id"
       @borrarTarea="borrarTarea"
-      @tareaActualizada="modificarTarea" 
+      @tareaActualizada="modificarTarea"
     />
   </div>
 </template>
@@ -90,11 +101,18 @@ const modificarTarea = (tareaActualizada) => {
 <style scoped>
 .tareas {
   display: flex;
-  flex-direction: column; /* Mantenido, pero si quieres tarjetas en fila usa flex-wrap y un width en TarjetaComponent */
+  flex-direction: row; /* Cambiado a row para disposición horizontal */
+  flex-wrap: wrap; /* Permite que las tarjetas se envuelvan a la siguiente línea */
   gap: 20px; /* Espacio entre tarjetas */
-  /* Si quieres que las tarjetas se muestren una al lado de la otra y se envuelvan: */
-  /* flex-direction: row; */
-  /* flex-wrap: wrap; */
-  /* justify-content: center; */ /* Opcional para centrar las tarjetas */
+  justify-content: center; /* Centra las tarjetas horizontalmente */
+  align-items: flex-start; /* Alinea las tarjetas por arriba en caso de diferentes alturas */
+}
+
+/* Media query para dispositivos móviles */
+@media (max-width: 768px) {
+  .tareas {
+    flex-direction: column; /* En móviles vuelve a vertical */
+    align-items: center;
+  }
 }
 </style>
