@@ -72,7 +72,7 @@ const procesarTareaGuardadaDesdeModal = (tareaModificada) => {
 
 <style scoped>
 .tarjeta {
-  width: 300px; /* Ancho fijo para las tarjetas */
+  width: 400px; /* Ancho fijo para las tarjetas */
   min-height: 200px; /* Altura mínima */
   background-color: aliceblue;
   color: black;
