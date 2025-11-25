@@ -40,6 +40,7 @@ Esta no es solo otra aplicación de tareas. Es una solución completa que te ayu
 
 ### 🎨 Interfaz Visual Intuitiva
 
+- **Icono personalizado**: Favicon único con diseño de lista de tareas
 - **Codificación por colores**: Identifica prioridades al instante
   - 🔴 **Alta**: Rojo para urgencia máxima
   - 🟠 **Media**: Naranja para importancia moderada
